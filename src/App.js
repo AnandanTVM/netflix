@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <NavBar />
       <Banner url={trending}/>
-      <RowPost url={Originals} title='Netflix Originals' />
-      <RowPost url={ActionMovies} title='Action' issmall />
+      <RowPost url={ActionMovies} title='Action'  />
+      <RowPost url={Originals} title='Netflix Originals' issmall />
       <RowPost url={HorrorMovies} title='Horror Movies' issmall />
       <RowPost url={RomanceMovies} title='Romance Movies' issmall />
       <RowPost url={Documentaries} title='Documentaries' issmall />
