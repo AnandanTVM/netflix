@@ -1,13 +1,13 @@
 
 import React, { useEffect, useState } from 'react'
-import { ApiKey, imageUrl } from '../../constants/constants'
+import {imageUrl} from '../../constants/constants'
 import axios from '../../axios'
 import './Banner.css'
 
-function Banner() {
+function Banner(props) {
     const [move, setMove] = useState()
     useEffect(() => {
-        axios.get(`trending/all/week?api_key=${ApiKey}&language=en-US`).then((response) => {
+        axios.get(props.url).then((response) => {
 
             setMove(response.data.results[0])
         })

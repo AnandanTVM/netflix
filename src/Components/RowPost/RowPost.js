@@ -1,23 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../../axios'
-import { ApiKey, imageUrl } from '../../constants/constants'
+import {imageUrl } from '../../constants/constants'
 import './RowPost.css'
-function RowPost() {
-    const [oginal, setOrginal] = useState()
+function RowPost(props) {
+    const [move, setMove] = useState()
     useEffect(() => {
-        axios.get(`discover/tv?api_key=${ApiKey}&with_networks=213`).then((response) => {
+        axios.get(props.url).then((response) => {
 
-            setOrginal(response.data)
+            setMove(response.data.results)
+           
+           
+            
         })
     }, [])
     return (
         <div className='row'>
-            <h2>Netflix Originals</h2>
+            <h2>{props.title}</h2>
             <div className="posters">
-
-                {/* {oginal.map((data) =>
-                    <img className='post' src={`${imageUrl + data.backdrop_path}`} alt="poster" />
-                )} */}
+              
+            {move? move.map((data)=>
+               <img className={props.issmall ?'smallPoster':'post'} src={`${imageUrl + data.backdrop_path}`} alt="poster" />
+           
+            ) : ""}
+                
             </div>
         </div>
     )
